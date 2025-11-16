@@ -238,7 +238,7 @@ export default function Home() {
   useEffect(() => {
     if (showAIPopup) {
       const text =
-        "LLooks like you don't have that many meetings today. Shall I play some Hans Zimmer essentials to help you get into your Flow State?"
+        "Looks like you don't have that many meetings today. Shall I play some Hans Zimmer essentials to help you get into your Flow State?"
       let i = 0
       const typingInterval = setInterval(() => {
         if (i < text.length) {
