@@ -5,189 +5,41 @@ import Image from "next/image"
 import { ChevronLeft, ChevronRight, Plus, Search, Settings, Menu, Clock, MapPin, Users, Calendar, Pause, Sparkles, X } from 'lucide-react'
 
 export default function Home() {
-  // Updated sample calendar events with all events before 4 PM
-  const events = [
-    {
-      id: 1,
-      title: "Team Meeting",
-      startTime: "09:00",
-      endTime: "10:00",
-      color: "bg-blue-500",
-      day: 1,
-      description: "Weekly team sync-up",
-      location: "Conference Room A",
-      attendees: ["John Doe", "Jane Smith", "Bob Johnson"],
-      organizer: "Alice Brown",
-    },
-    {
-      id: 2,
-      title: "Lunch with Sarah",
-      startTime: "12:30",
-      endTime: "13:30",
-      color: "bg-green-500",
-      day: 1,
-      description: "Discuss project timeline",
-      location: "Cafe Nero",
-      attendees: ["Sarah Lee"],
-      organizer: "You",
-    },
-    {
-      id: 3,
-      title: "Project Review",
-      startTime: "14:00",
-      endTime: "15:30",
-      color: "bg-purple-500",
-      day: 3,
-      description: "Q2 project progress review",
-      location: "Meeting Room 3",
-      attendees: ["Team Alpha", "Stakeholders"],
-      organizer: "Project Manager",
-    },
-    {
-      id: 4,
-      title: "Client Call",
-      startTime: "10:00",
-      endTime: "11:00",
-      color: "bg-yellow-500",
-      day: 2,
-      description: "Quarterly review with major client",
-      location: "Zoom Meeting",
-      attendees: ["Client Team", "Sales Team"],
-      organizer: "Account Manager",
-    },
-    {
-      id: 5,
-      title: "Team Brainstorm",
-      startTime: "13:00",
-      endTime: "14:30",
-      color: "bg-indigo-500",
-      day: 4,
-      description: "Ideation session for new product features",
-      location: "Creative Space",
-      attendees: ["Product Team", "Design Team"],
-      organizer: "Product Owner",
-    },
-    {
-      id: 6,
-      title: "Product Demo",
-      startTime: "11:00",
-      endTime: "12:00",
-      color: "bg-pink-500",
-      day: 5,
-      description: "Showcase new features to stakeholders",
-      location: "Demo Room",
-      attendees: ["Stakeholders", "Dev Team"],
-      organizer: "Tech Lead",
-    },
-    {
-      id: 7,
-      title: "Marketing Meeting",
-      startTime: "13:00",
-      endTime: "14:00",
-      color: "bg-teal-500",
-      day: 6,
-      description: "Discuss Q3 marketing strategy",
-      location: "Marketing Office",
-      attendees: ["Marketing Team"],
-      organizer: "Marketing Director",
-    },
-    {
-      id: 8,
-      title: "Code Review",
-      startTime: "15:00",
-      endTime: "16:00",
-      color: "bg-cyan-500",
-      day: 7,
-      description: "Review pull requests for new feature",
-      location: "Dev Area",
-      attendees: ["Dev Team"],
-      organizer: "Senior Developer",
-    },
-    {
-      id: 9,
-      title: "Morning Standup",
-      startTime: "08:30",
-      endTime: "09:30", // Changed from "09:00" to "09:30"
-      color: "bg-blue-400",
-      day: 2,
-      description: "Daily team standup",
-      location: "Slack Huddle",
-      attendees: ["Development Team"],
-      organizer: "Scrum Master",
-    },
-    {
-      id: 10,
-      title: "Design Review",
-      startTime: "14:30",
-      endTime: "15:45",
-      color: "bg-purple-400",
-      day: 5,
-      description: "Review new UI designs",
-      location: "Design Lab",
-      attendees: ["UX Team", "Product Manager"],
-      organizer: "Lead Designer",
-    },
-    {
-      id: 11,
-      title: "Investor Meeting",
-      startTime: "10:30",
-      endTime: "12:00",
-      color: "bg-red-400",
-      day: 7,
-      description: "Quarterly investor update",
-      location: "Board Room",
-      attendees: ["Executive Team", "Investors"],
-      organizer: "CEO",
-    },
-    {
-      id: 12,
-      title: "Team Training",
-      startTime: "09:30",
-      endTime: "11:30",
-      color: "bg-green-400",
-      day: 4,
-      description: "New tool onboarding session",
-      location: "Training Room",
-      attendees: ["All Departments"],
-      organizer: "HR",
-    },
-    {
-      id: 13,
-      title: "Budget Review",
-      startTime: "13:30",
-      endTime: "15:00",
-      color: "bg-yellow-400",
-      day: 3,
-      description: "Quarterly budget analysis",
-      location: "Finance Office",
-      attendees: ["Finance Team", "Department Heads"],
-      organizer: "CFO",
-    },
-    {
-      id: 14,
-      title: "Client Presentation",
-      startTime: "11:00",
-      endTime: "12:30",
-      color: "bg-orange-400",
-      day: 6,
-      description: "Present new project proposal",
-      location: "Client Office",
-      attendees: ["Sales Team", "Client Representatives"],
-      organizer: "Account Executive",
-    },
-    {
-      id: 15,
-      title: "Product Planning",
-      startTime: "14:00",
-      endTime: "15:30",
-      color: "bg-pink-400",
-      day: 1,
-      description: "Roadmap discussion for Q3",
-      location: "Strategy Room",
-      attendees: ["Product Team", "Engineering Leads"],
-      organizer: "Product Manager",
-    },
+  const sampleEvents = [
+    // 2025 events
+    { id: 1, title: "Team Meeting", startTime: "09:00", endTime: "10:00", color: "bg-blue-500", date: "2025-03-05", description: "Weekly team sync-up", location: "Conference Room A", attendees: ["John Doe", "Jane Smith", "Bob Johnson"], organizer: "Alice Brown" },
+    { id: 2, title: "Lunch with Sarah", startTime: "12:30", endTime: "13:30", color: "bg-green-500", date: "2025-03-05", description: "Discuss project timeline", location: "Cafe Nero", attendees: ["Sarah Lee"], organizer: "You" },
+    { id: 3, title: "Project Review", startTime: "14:00", endTime: "15:30", color: "bg-purple-500", date: "2025-03-07", description: "Q2 project progress review", location: "Meeting Room 3", attendees: ["Team Alpha", "Stakeholders"], organizer: "Project Manager" },
+    { id: 4, title: "Client Call", startTime: "10:00", endTime: "11:00", color: "bg-yellow-500", date: "2025-03-06", description: "Quarterly review with major client", location: "Zoom Meeting", attendees: ["Client Team", "Sales Team"], organizer: "Account Manager" },
+    { id: 5, title: "Team Brainstorm", startTime: "13:00", endTime: "14:30", color: "bg-indigo-500", date: "2025-03-08", description: "Ideation session for new product features", location: "Creative Space", attendees: ["Product Team", "Design Team"], organizer: "Product Owner" },
+    
+    // April 2025
+    { id: 16, title: "Budget Planning", startTime: "10:00", endTime: "11:30", color: "bg-blue-400", date: "2025-04-10", description: "Q3 budget review", location: "Finance Room", attendees: ["Finance Team"], organizer: "CFO" },
+    { id: 17, title: "Product Launch", startTime: "14:00", endTime: "16:00", color: "bg-red-500", date: "2025-04-15", description: "New feature launch event", location: "Main Hall", attendees: ["All Hands"], organizer: "CEO" },
+    
+    // May 2025
+    { id: 18, title: "Team Offsite", startTime: "09:00", endTime: "17:00", color: "bg-green-600", date: "2025-05-20", description: "Quarterly team building", location: "Mountain Resort", attendees: ["Entire Team"], organizer: "HR" },
+    
+    // June 2025
+    { id: 19, title: "Mid-Year Review", startTime: "10:00", endTime: "12:00", color: "bg-purple-600", date: "2025-06-30", description: "Half-year performance review", location: "Conference Center", attendees: ["All Managers"], organizer: "HR Director" },
+    
+    // 2026 events
+    { id: 20, title: "New Year Planning", startTime: "09:00", endTime: "11:00", color: "bg-blue-600", date: "2026-01-05", description: "2026 strategic planning", location: "Board Room", attendees: ["Leadership Team"], organizer: "CEO" },
+    { id: 21, title: "Spring Conference", startTime: "08:00", endTime: "17:00", color: "bg-teal-500", date: "2026-03-15", description: "Industry conference", location: "Convention Center", attendees: ["Select Team Members"], organizer: "Marketing" },
+    
+    // 2027 events
+    { id: 22, title: "Anniversary Celebration", startTime: "18:00", endTime: "22:00", color: "bg-pink-600", date: "2027-06-15", description: "Company 10th anniversary", location: "Grand Hotel", attendees: ["All Employees"], organizer: "Events Team" },
+    
+    // 2028 events
+    { id: 23, title: "Innovation Summit", startTime: "09:00", endTime: "16:00", color: "bg-orange-500", date: "2028-09-10", description: "Tech innovation showcase", location: "Tech Park", attendees: ["Tech Team"], organizer: "CTO" },
+    
+    // 2029 events
+    { id: 24, title: "Global Expansion", startTime: "10:00", endTime: "12:00", color: "bg-indigo-600", date: "2029-11-20", description: "International office opening", location: "London Office", attendees: ["Executive Team"], organizer: "COO" },
+    
+    // 2030 events
+    { id: 25, title: "Future Planning", startTime: "14:00", endTime: "16:00", color: "bg-cyan-600", date: "2030-01-10", description: "Next decade strategy", location: "Executive Suite", attendees: ["Board Members"], organizer: "CEO" },
   ]
+
   const [isLoaded, setIsLoaded] = useState(false)
   const [showAIPopup, setShowAIPopup] = useState(false)
   const [typedText, setTypedText] = useState("")
@@ -199,8 +51,7 @@ export default function Home() {
     startTime: "09:00",
     endTime: "10:00",
     color: "bg-blue-500",
-    date: new Date().toISOString().split("T")[0], // Current date in YYYY-MM-DD format
-    day: new Date().getDay() || 7, // Still keeping day for display purposes
+    date: new Date().toISOString().split("T")[0],
     description: "",
     location: "",
     attendees: [],
@@ -210,7 +61,7 @@ export default function Home() {
     recurrenceEndDate: "",
   })
   const [attendeeInput, setAttendeeInput] = useState("")
-  const [allEvents, setAllEvents] = useState(events)
+  const [allEvents, setAllEvents] = useState(sampleEvents)
   const colorOptions = [
     { name: "Blue", value: "bg-blue-500" },
     { name: "Green", value: "bg-green-500" },
@@ -227,7 +78,6 @@ export default function Home() {
   useEffect(() => {
     setIsLoaded(true)
 
-    // Show AI popup after 3 seconds
     const popupTimer = setTimeout(() => {
       setShowAIPopup(true)
     }, 3000)
@@ -254,36 +104,55 @@ export default function Home() {
   }, [showAIPopup])
 
   const [currentView, setCurrentView] = useState("week")
-  const [currentMonth, setCurrentMonth] = useState("March 2025")
-  const [currentDate, setCurrentDate] = useState(new Date(2025, 2, 5)) // March 5, 2025
+  const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedEvent, setSelectedEvent] = useState(null)
 
   const handleEventClick = (event) => {
     setSelectedEvent(event)
   }
 
-  // Sample calendar days for the week view
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-  const weekDates = [3, 4, 5, 6, 7, 8, 9]
-  const timeSlots = Array.from({ length: 9 }, (_, i) => i + 8) // 8 AM to 4 PM
+  const timeSlots = Array.from({ length: 9 }, (_, i) => i + 8)
 
-  // Helper function to calculate event position and height
   const calculateEventStyle = (startTime, endTime) => {
     const start = Number.parseInt(startTime.split(":")[0]) + Number.parseInt(startTime.split(":")[1]) / 60
     const end = Number.parseInt(endTime.split(":")[0]) + Number.parseInt(endTime.split(":")[1]) / 60
-    const top = (start - 8) * 80 // 80px per hour
+    const top = (start - 8) * 80
     const height = (end - start) * 80
     return { top: `${top}px`, height: `${height}px` }
   }
 
-  // Sample calendar for mini calendar
-  const daysInMonth = 31
-  const firstDayOffset = 5 // Friday is the first day of the month in this example
-  const miniCalendarDays = Array.from({ length: daysInMonth + firstDayOffset }, (_, i) =>
-    i < firstDayOffset ? null : i - firstDayOffset + 1,
-  )
+  const getMiniCalendarDays = () => {
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()
+    const firstDay = new Date(year, month, 1).getDay()
+    const daysInMonth = new Date(year, month + 1, 0).getDate()
+    
+    const days = []
+    for (let i = 0; i < firstDay; i++) {
+      days.push(null)
+    }
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(i)
+    }
+    return days
+  }
 
-  // Sample my calendars
+  const getWeekDates = () => {
+    const startOfWeek = new Date(currentDate)
+    const day = startOfWeek.getDay()
+    const diff = startOfWeek.getDate() - day
+    startOfWeek.setDate(diff)
+    
+    const dates = []
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(startOfWeek)
+      date.setDate(startOfWeek.getDate() + i)
+      dates.push(date)
+    }
+    return dates
+  }
+
   const myCalendars = [
     { name: "My Calendar", color: "bg-blue-500" },
     { name: "Work", color: "bg-green-500" },
@@ -293,17 +162,10 @@ export default function Home() {
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying)
-    // Here you would typically also control the actual audio playback
-  }
-
-  const calculateDayFromDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.getDay() || 7 // Convert 0 (Sunday) to 7 for consistency
   }
 
   const handleCreateEvent = () => {
     setShowCreateEventModal(true)
-    // Reset form
     const today = new Date()
     setNewEvent({
       id: Math.max(0, ...allEvents.map((e) => e.id)) + 1,
@@ -311,8 +173,7 @@ export default function Home() {
       startTime: "09:00",
       endTime: "10:00",
       color: "bg-blue-500",
-      date: today.toISOString().split("T")[0], // Current date in YYYY-MM-DD format
-      day: today.getDay() || 7, // Current day (1-7)
+      date: today.toISOString().split("T")[0],
       description: "",
       location: "",
       attendees: [],
@@ -326,17 +187,7 @@ export default function Home() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-
-    if (name === "date") {
-      // When date changes, update the day as well
-      setNewEvent((prev) => ({
-        ...prev,
-        [name]: value,
-        day: calculateDayFromDate(value),
-      }))
-    } else {
-      setNewEvent((prev) => ({ ...prev, [name]: value }))
-    }
+    setNewEvent((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleAddAttendee = () => {
@@ -359,16 +210,12 @@ export default function Home() {
   const handleSubmitEvent = (e) => {
     e.preventDefault()
 
-    // Validate form
     if (!newEvent.title) {
       alert("Please enter an event title")
       return
     }
 
-    // Add new event to events array
     setAllEvents((prev) => [...prev, newEvent])
-
-    // Close modal
     setShowCreateEventModal(false)
   }
 
@@ -396,12 +243,31 @@ export default function Home() {
     const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     
     if (currentView === "day") {
-      return `${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}`
+      return `${dayNames[currentDate.getDay()]}, ${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`
     } else if (currentView === "week") {
-      return `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`
+      const weekDates = getWeekDates()
+      const firstDate = weekDates[0]
+      const lastDate = weekDates[6]
+      
+      if (firstDate.getMonth() === lastDate.getMonth()) {
+        return `${monthNames[firstDate.getMonth()]} ${firstDate.getDate()}-${lastDate.getDate()}, ${firstDate.getFullYear()}`
+      } else {
+        return `${monthNames[firstDate.getMonth()]} ${firstDate.getDate()} - ${monthNames[lastDate.getMonth()]} ${lastDate.getDate()}, ${firstDate.getFullYear()}`
+      }
     } else {
       return `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`
     }
+  }
+
+  const getEventsForDate = (date) => {
+    const dateStr = date.toISOString().split("T")[0]
+    return allEvents.filter(event => event.date === dateStr)
+  }
+
+  const navigateMiniCalendar = (direction) => {
+    const newDate = new Date(currentDate)
+    newDate.setMonth(newDate.getMonth() + (direction === "next" ? 1 : -1))
+    setCurrentDate(newDate)
   }
 
   return (
@@ -457,15 +323,16 @@ export default function Home() {
               <span>Create</span>
             </button>
 
-            {/* Mini Calendar */}
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-white font-medium">{currentMonth}</h3>
+                <h3 className="text-white font-medium">
+                  {new Date(currentDate.getFullYear(), currentDate.getMonth()).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                </h3>
                 <div className="flex gap-1">
-                  <button className="p-1 rounded-full hover:bg-white/20">
+                  <button className="p-1 rounded-full hover:bg-white/20" onClick={() => navigateMiniCalendar("prev")}>
                     <ChevronLeft className="h-4 w-4 text-white" />
                   </button>
-                  <button className="p-1 rounded-full hover:bg-white/20">
+                  <button className="p-1 rounded-full hover:bg-white/20" onClick={() => navigateMiniCalendar("next")}>
                     <ChevronRight className="h-4 w-4 text-white" />
                   </button>
                 </div>
@@ -478,16 +345,28 @@ export default function Home() {
                   </div>
                 ))}
 
-                {miniCalendarDays.map((day, i) => (
-                  <div
-                    key={i}
-                    className={`text-xs rounded-full w-7 h-7 flex items-center justify-center ${
-                      day === 5 ? "bg-blue-500 text-white" : "text-white hover:bg-white/20"
-                    } ${!day ? "invisible" : ""}`}
-                  >
-                    {day}
-                  </div>
-                ))}
+                {getMiniCalendarDays().map((day, i) => {
+                  const isToday = day === new Date().getDate() && 
+                                  currentDate.getMonth() === new Date().getMonth() &&
+                                  currentDate.getFullYear() === new Date().getFullYear()
+                  
+                  return (
+                    <div
+                      key={i}
+                      className={`text-xs rounded-full w-7 h-7 flex items-center justify-center ${
+                        isToday ? "bg-blue-500 text-white" : "text-white hover:bg-white/20"
+                      } ${!day ? "invisible" : "cursor-pointer"}`}
+                      onClick={() => {
+                        if (day) {
+                          const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day)
+                          setCurrentDate(newDate)
+                        }
+                      }}
+                    >
+                      {day}
+                    </div>
+                  )
+                })}
               </div>
             </div>
 
@@ -556,7 +435,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Day View */}
           {currentView === "day" && (
             <div className="flex-1 overflow-auto p-4">
               <div className="bg-white/20 backdrop-blur-lg rounded-xl border border-white/20 shadow-xl h-full">
@@ -588,55 +466,55 @@ export default function Home() {
                     ))}
 
                     {/* Events for current day */}
-                    {allEvents
-                      .filter((event) => event.day === (currentDate.getDay() || 7))
-                      .map((event, i) => {
-                        const eventStyle = calculateEventStyle(event.startTime, event.endTime)
-                        return (
-                          <div
-                            key={i}
-                            className={`absolute ${event.color} rounded-md p-3 text-white shadow-md cursor-pointer transition-all duration-200 ease-in-out hover:translate-y-[-2px] hover:shadow-lg ${event.isRecurring ? "border-l-4 border-white" : ""}`}
-                            style={{
-                              ...eventStyle,
-                              left: "8px",
-                              right: "8px",
-                            }}
-                            onClick={() => handleEventClick(event)}
-                          >
-                            <div className="font-semibold text-sm">{event.title}</div>
-                            <div className="opacity-90 text-xs mt-1">{`${event.startTime} - ${event.endTime}`}</div>
-                            {event.location && (
-                              <div className="flex items-center gap-1 mt-2 text-xs opacity-80">
-                                <MapPin className="h-3 w-3" />
-                                <span>{event.location}</span>
-                              </div>
-                            )}
-                          </div>
-                        )
-                      })}
+                    {getEventsForDate(currentDate).map((event, i) => {
+                      const eventStyle = calculateEventStyle(event.startTime, event.endTime)
+                      return (
+                        <div
+                          key={i}
+                          className={`absolute ${event.color} rounded-md p-3 text-white shadow-md cursor-pointer transition-all duration-200 ease-in-out hover:translate-y-[-2px] hover:shadow-lg ${event.isRecurring ? "border-l-4 border-white" : ""}`}
+                          style={{
+                            ...eventStyle,
+                            left: "8px",
+                            right: "8px",
+                          }}
+                          onClick={() => handleEventClick(event)}
+                        >
+                          <div className="font-semibold text-sm">{event.title}</div>
+                          <div className="opacity-90 text-xs mt-1">{`${event.startTime} - ${event.endTime}`}</div>
+                          {event.location && (
+                            <div className="flex items-center gap-1 mt-2 text-xs opacity-80">
+                              <MapPin className="h-3 w-3" />
+                              <span>{event.location}</span>
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Week View */}
           {currentView === "week" && (
             <div className="flex-1 overflow-auto p-4">
               <div className="bg-white/20 backdrop-blur-lg rounded-xl border border-white/20 shadow-xl h-full">
                 {/* Week Header */}
                 <div className="grid grid-cols-8 border-b border-white/20">
                   <div className="p-2 text-center text-white/50 text-xs"></div>
-                  {weekDays.map((day, i) => (
-                    <div key={i} className="p-2 text-center border-l border-white/20">
-                      <div className="text-xs text-white/70 font-medium">{day}</div>
-                      <div
-                        className={`text-lg font-medium mt-1 text-white ${weekDates[i] === 5 ? "bg-blue-500 rounded-full w-8 h-8 flex items-center justify-center mx-auto" : ""}`}
-                      >
-                        {weekDates[i]}
+                  {getWeekDates().map((date, i) => {
+                    const isToday = date.toDateString() === new Date().toDateString()
+                    return (
+                      <div key={i} className="p-2 text-center border-l border-white/20">
+                        <div className="text-xs text-white/70 font-medium">{weekDays[i]}</div>
+                        <div
+                          className={`text-lg font-medium mt-1 text-white ${isToday ? "bg-blue-500 rounded-full w-8 h-8 flex items-center justify-center mx-auto" : ""}`}
+                        >
+                          {date.getDate()}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
 
                 {/* Time Grid */}
@@ -651,42 +529,31 @@ export default function Home() {
                   </div>
 
                   {/* Days Columns */}
-                  {Array.from({ length: 7 }).map((_, dayIndex) => (
+                  {getWeekDates().map((date, dayIndex) => (
                     <div key={dayIndex} className="border-l border-white/20 relative">
                       {timeSlots.map((_, timeIndex) => (
                         <div key={timeIndex} className="h-20 border-b border-white/10"></div>
                       ))}
 
                       {/* Events */}
-                      {allEvents
-                        .filter((event) => {
-                          // For one-time events, check if the day matches
-                          if (!event.isRecurring) {
-                            return event.day === dayIndex + 1
-                          }
-
-                          // For recurring events, check based on recurrence pattern
-                          // This is a simplified version - a real implementation would be more complex
-                          return event.day === dayIndex + 1
-                        })
-                        .map((event, i) => {
-                          const eventStyle = calculateEventStyle(event.startTime, event.endTime)
-                          return (
-                            <div
-                              key={i}
-                              className={`absolute ${event.color} rounded-md p-2 text-white text-xs shadow-md cursor-pointer transition-all duration-200 ease-in-out hover:translate-y-[-2px] hover:shadow-lg ${event.isRecurring ? "border-l-4 border-white" : ""}`}
-                              style={{
-                                ...eventStyle,
-                                left: "4px",
-                                right: "4px",
-                              }}
-                              onClick={() => handleEventClick(event)}
-                            >
-                              <div className="font-medium">{event.title}</div>
-                              <div className="opacity-80 text-[10px] mt-1">{`${event.startTime} - ${event.endTime}`}</div>
-                            </div>
-                          )
-                        })}
+                      {getEventsForDate(date).map((event, i) => {
+                        const eventStyle = calculateEventStyle(event.startTime, event.endTime)
+                        return (
+                          <div
+                            key={i}
+                            className={`absolute ${event.color} rounded-md p-2 text-white text-xs shadow-md cursor-pointer transition-all duration-200 ease-in-out hover:translate-y-[-2px] hover:shadow-lg ${event.isRecurring ? "border-l-4 border-white" : ""}`}
+                            style={{
+                              ...eventStyle,
+                              left: "4px",
+                              right: "4px",
+                            }}
+                            onClick={() => handleEventClick(event)}
+                          >
+                            <div className="font-medium">{event.title}</div>
+                            <div className="opacity-80 text-[10px] mt-1">{`${event.startTime} - ${event.endTime}`}</div>
+                          </div>
+                        )
+                      })}
                     </div>
                   ))}
                 </div>
@@ -694,7 +561,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* Month View */}
           {currentView === "month" && (
             <div className="flex-1 overflow-auto p-4">
               <div className="bg-white/20 backdrop-blur-lg rounded-xl border border-white/20 shadow-xl h-full">
@@ -709,9 +575,10 @@ export default function Home() {
 
                 {/* Month Grid */}
                 <div className="grid grid-cols-7 h-[calc(100%-60px)]">
-                  {miniCalendarDays.map((day, i) => {
-                    const dayIndex = day ? ((i - firstDayOffset) % 7) + 1 : null
-                    const dayEvents = day ? allEvents.filter((event) => event.day === dayIndex) : []
+                  {getMiniCalendarDays().map((day, i) => {
+                    const date = day ? new Date(currentDate.getFullYear(), currentDate.getMonth(), day) : null
+                    const dayEvents = date ? getEventsForDate(date) : []
+                    const isToday = date && date.toDateString() === new Date().toDateString()
 
                     return (
                       <div
@@ -722,7 +589,7 @@ export default function Home() {
                           <>
                             <div
                               className={`text-sm font-medium mb-2 ${
-                                day === 5 ? "bg-blue-500 text-white rounded-full w-7 h-7 flex items-center justify-center" : "text-white"
+                                isToday ? "bg-blue-500 text-white rounded-full w-7 h-7 flex items-center justify-center" : "text-white"
                               }`}
                             >
                               {day}
@@ -815,7 +682,7 @@ export default function Home() {
                 </p>
                 <p className="flex items-center">
                   <Calendar className="mr-2 h-5 w-5" />
-                  {`${weekDays[selectedEvent.day - 1]}, ${weekDates[selectedEvent.day - 1]} ${currentMonth}`}
+                  {new Date(selectedEvent.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
                 {selectedEvent && selectedEvent.isRecurring && (
                   <p className="flex items-center">
@@ -859,7 +726,7 @@ export default function Home() {
         {/* Create Event Modal */}
         {showCreateEventModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white/20 backdrop-blur-lg p-6 rounded-lg shadow-xl max-w-md w-full mx-4 border border-white/30">
+            <div className="bg-white/20 backdrop-blur-lg p-6 rounded-lg shadow-xl max-w-md w-full mx-4 border border-white/30 max-h-[90vh] overflow-y-auto">
               <h3 className="text-2xl font-bold mb-4 text-white">Create New Event</h3>
 
               <form onSubmit={handleSubmitEvent} className="space-y-4">
