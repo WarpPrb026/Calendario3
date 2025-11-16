@@ -55,24 +55,24 @@ export default function Home() {
     description: "",
     location: "",
     attendees: [],
-    organizer: "You",
+    organizer: "Tú",
     isRecurring: false,
-    recurrencePattern: "weekly",
+    recurrencePattern: "semanalmente",
     recurrenceEndDate: "",
   })
   const [attendeeInput, setAttendeeInput] = useState("")
   const [allEvents, setAllEvents] = useState(sampleEvents)
   const colorOptions = [
-    { name: "Blue", value: "bg-blue-500" },
-    { name: "Green", value: "bg-green-500" },
-    { name: "Purple", value: "bg-purple-500" },
-    { name: "Yellow", value: "bg-yellow-500" },
-    { name: "Indigo", value: "bg-indigo-500" },
-    { name: "Pink", value: "bg-pink-500" },
-    { name: "Teal", value: "bg-teal-500" },
-    { name: "Cyan", value: "bg-cyan-500" },
-    { name: "Orange", value: "bg-orange-400" },
-    { name: "Red", value: "bg-red-400" },
+    { name: "Azul", value: "bg-blue-500" },
+    { name: "Verde", value: "bg-green-500" },
+    { name: "Morado", value: "bg-purple-500" },
+    { name: "Amarillo", value: "bg-yellow-500" },
+    { name: "Índigo", value: "bg-indigo-500" },
+    { name: "Rosa", value: "bg-pink-500" },
+    { name: "Verde azulado", value: "bg-teal-500" },
+    { name: "Cian", value: "bg-cyan-500" },
+    { name: "Naranja", value: "bg-orange-400" },
+    { name: "Rojo", value: "bg-red-400" },
   ]
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function Home() {
   useEffect(() => {
     if (showAIPopup) {
       const text =
-        "Looks like you don't have that many meetings today. Shall I play some Hans Zimmer essentials to help you get into your Flow State?"
+        "Parece que no tienes tantas reuniones hoy. ¿Te gustaría que reproduzca música de Hans Zimmer para ayudarte a entrar en tu estado de concentración?"
       let i = 0
       const typingInterval = setInterval(() => {
         if (i < text.length) {
@@ -111,7 +111,7 @@ export default function Home() {
     setSelectedEvent(event)
   }
 
-  const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+  const weekDays = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"]
   const timeSlots = Array.from({ length: 9 }, (_, i) => i + 8)
 
   const calculateEventStyle = (startTime, endTime) => {
@@ -154,10 +154,10 @@ export default function Home() {
   }
 
   const myCalendars = [
-    { name: "My Calendar", color: "bg-blue-500" },
-    { name: "Work", color: "bg-green-500" },
+    { name: "Mi Calendario", color: "bg-blue-500" },
+    { name: "Trabajo", color: "bg-green-500" },
     { name: "Personal", color: "bg-purple-500" },
-    { name: "Family", color: "bg-orange-500" },
+    { name: "Familia", color: "bg-orange-500" },
   ]
 
   const togglePlay = () => {
@@ -177,9 +177,9 @@ export default function Home() {
       description: "",
       location: "",
       attendees: [],
-      organizer: "You",
+      organizer: "Tú",
       isRecurring: false,
-      recurrencePattern: "weekly",
+      recurrencePattern: "semanalmente",
       recurrenceEndDate: "",
     })
     setAttendeeInput("")
@@ -211,7 +211,7 @@ export default function Home() {
     e.preventDefault()
 
     if (!newEvent.title) {
-      alert("Please enter an event title")
+      alert("Por favor ingresa un título para el evento")
       return
     }
 
@@ -238,24 +238,24 @@ export default function Home() {
   }
 
   const getDateDisplay = () => {
-    const monthNames = ["January", "February", "March", "April", "May", "June", 
-                        "July", "August", "September", "October", "November", "December"]
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+    const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
     
     if (currentView === "day") {
-      return `${dayNames[currentDate.getDay()]}, ${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()}`
+      return `${dayNames[currentDate.getDay()]}, ${currentDate.getDate()} de ${monthNames[currentDate.getMonth()]} de ${currentDate.getFullYear()}`
     } else if (currentView === "week") {
       const weekDates = getWeekDates()
       const firstDate = weekDates[0]
       const lastDate = weekDates[6]
       
       if (firstDate.getMonth() === lastDate.getMonth()) {
-        return `${monthNames[firstDate.getMonth()]} ${firstDate.getDate()}-${lastDate.getDate()}, ${firstDate.getFullYear()}`
+        return `${firstDate.getDate()}-${lastDate.getDate()} de ${monthNames[firstDate.getMonth()]} de ${firstDate.getFullYear()}`
       } else {
-        return `${monthNames[firstDate.getMonth()]} ${firstDate.getDate()} - ${monthNames[lastDate.getMonth()]} ${lastDate.getDate()}, ${firstDate.getFullYear()}`
+        return `${firstDate.getDate()} de ${monthNames[firstDate.getMonth()]} - ${lastDate.getDate()} de ${monthNames[lastDate.getMonth()]} de ${firstDate.getFullYear()}`
       }
     } else {
-      return `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`
+      return `${monthNames[currentDate.getMonth()]} de ${currentDate.getFullYear()}`
     }
   }
 
@@ -288,7 +288,7 @@ export default function Home() {
       >
         <div className="flex items-center gap-4">
           <Menu className="h-6 w-6 text-white" />
-          <span className="text-2xl font-semibold text-white drop-shadow-lg">Calendar</span>
+          <span className="text-2xl font-semibold text-white drop-shadow-lg">Calendario</span>
         </div>
 
         <div className="flex items-center gap-4">
@@ -296,7 +296,7 @@ export default function Home() {
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/70" />
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Buscar"
               className="rounded-full bg-white/10 backdrop-blur-sm pl-10 pr-4 py-2 text-white placeholder:text-white/70 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
             />
           </div>
@@ -320,13 +320,13 @@ export default function Home() {
               onClick={handleCreateEvent}
             >
               <Plus className="h-5 w-5" />
-              <span>Create</span>
+              <span>Crear</span>
             </button>
 
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-white font-medium">
-                  {new Date(currentDate.getFullYear(), currentDate.getMonth()).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                  {new Date(currentDate.getFullYear(), currentDate.getMonth()).toLocaleDateString('es-MX', { month: 'long', year: 'numeric' })}
                 </h3>
                 <div className="flex gap-1">
                   <button className="p-1 rounded-full hover:bg-white/20" onClick={() => navigateMiniCalendar("prev")}>
@@ -339,7 +339,7 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-7 gap-1 text-center">
-                {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
+                {["D", "L", "M", "M", "J", "V", "S"].map((day, i) => (
                   <div key={i} className="text-xs text-white/70 font-medium py-1">
                     {day}
                   </div>
@@ -372,7 +372,7 @@ export default function Home() {
 
             {/* My Calendars */}
             <div>
-              <h3 className="text-white font-medium mb-3">My calendars</h3>
+              <h3 className="text-white font-medium mb-3">Mis calendarios</h3>
               <div className="space-y-2">
                 {myCalendars.map((cal, i) => (
                   <div key={i} className="flex items-center gap-3">
@@ -401,7 +401,7 @@ export default function Home() {
           {/* Calendar Controls */}
           <div className="flex items-center justify-between p-4 border-b border-white/20">
             <div className="flex items-center gap-4">
-              <button onClick={goToToday} className="px-4 py-2 text-white bg-blue-500 rounded-md">Today</button>
+              <button onClick={goToToday} className="px-4 py-2 text-white bg-blue-500 rounded-md">Hoy</button>
               <div className="flex">
                 <button onClick={() => navigateDate("prev")} className="p-2 text-white hover:bg-white/10 rounded-l-md">
                   <ChevronLeft className="h-5 w-5" />
@@ -418,19 +418,19 @@ export default function Home() {
                 onClick={() => setCurrentView("day")}
                 className={`px-3 py-1 rounded ${currentView === "day" ? "bg-white/20" : ""} text-white text-sm`}
               >
-                Day
+                Día
               </button>
               <button
                 onClick={() => setCurrentView("week")}
                 className={`px-3 py-1 rounded ${currentView === "week" ? "bg-white/20" : ""} text-white text-sm`}
               >
-                Week
+                Semana
               </button>
               <button
                 onClick={() => setCurrentView("month")}
                 className={`px-3 py-1 rounded ${currentView === "month" ? "bg-white/20" : ""} text-white text-sm`}
               >
-                Month
+                Mes
               </button>
             </div>
           </div>
@@ -442,7 +442,7 @@ export default function Home() {
                 <div className="border-b border-white/20 p-4">
                   <div className="text-center">
                     <div className="text-sm text-white/70 font-medium">
-                      {["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"][currentDate.getDay()]}
+                      {["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"][currentDate.getDay()]}
                     </div>
                     <div className="text-3xl font-semibold text-white mt-1">{currentDate.getDate()}</div>
                   </div>
@@ -606,7 +606,7 @@ export default function Home() {
                                 </div>
                               ))}
                               {dayEvents.length > 3 && (
-                                <div className="text-white/70 text-xs px-2">+{dayEvents.length - 3} more</div>
+                                <div className="text-white/70 text-xs px-2">+{dayEvents.length - 3} más</div>
                               )}
                             </div>
                           </>
@@ -643,7 +643,7 @@ export default function Home() {
                   onClick={togglePlay}
                   className="flex-1 py-2.5 bg-white/10 hover:bg-white/20 rounded-xl text-sm transition-colors font-medium"
                 >
-                  Yes
+                  Sí
                 </button>
                 <button
                   onClick={() => setShowAIPopup(false)}
@@ -659,7 +659,7 @@ export default function Home() {
                     onClick={togglePlay}
                   >
                     <Pause className="h-4 w-4" />
-                    <span>Pause Hans Zimmer</span>
+                    <span>Pausar Hans Zimmer</span>
                   </button>
                 </div>
               )}
@@ -667,6 +667,7 @@ export default function Home() {
           </div>
         )}
 
+        {/* Event Details Modal */}
         {selectedEvent && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className={`${selectedEvent.color} p-6 rounded-lg shadow-xl max-w-md w-full mx-4`}>
@@ -682,33 +683,33 @@ export default function Home() {
                 </p>
                 <p className="flex items-center">
                   <Calendar className="mr-2 h-5 w-5" />
-                  {new Date(selectedEvent.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                  {new Date(selectedEvent.date).toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
                 {selectedEvent && selectedEvent.isRecurring && (
                   <p className="flex items-center">
                     <Calendar className="mr-2 h-5 w-5" />
                     <span>
-                      <strong>Recurs:</strong>{" "}
+                      <strong>Se repite:</strong>{" "}
                       {selectedEvent.recurrencePattern.charAt(0).toUpperCase() +
                         selectedEvent.recurrencePattern.slice(1)}
                       {selectedEvent.recurrenceEndDate &&
-                        ` until ${new Date(selectedEvent.recurrenceEndDate).toLocaleDateString()}`}
+                        ` hasta ${new Date(selectedEvent.recurrenceEndDate).toLocaleDateString('es-MX')}`}
                     </span>
                   </p>
                 )}
                 <p className="flex items-start">
                   <Users className="mr-2 h-5 w-5 mt-1" />
                   <span>
-                    <strong>Attendees:</strong>
+                    <strong>Asistentes:</strong>
                     <br />
-                    {selectedEvent.attendees.join(", ") || "No attendees"}
+                    {selectedEvent.attendees.join(", ") || "Sin asistentes"}
                   </span>
                 </p>
                 <p>
-                  <strong>Organizer:</strong> {selectedEvent.organizer}
+                  <strong>Organizador:</strong> {selectedEvent.organizer}
                 </p>
                 <p>
-                  <strong>Description:</strong> {selectedEvent.description}
+                  <strong>Descripción:</strong> {selectedEvent.description}
                 </p>
               </div>
               <div className="mt-6 flex justify-end">
@@ -716,7 +717,7 @@ export default function Home() {
                   className="bg-white text-gray-800 px-4 py-2 rounded hover:bg-gray-100 transition-colors"
                   onClick={() => setSelectedEvent(null)}
                 >
-                  Close
+                  Cerrar
                 </button>
               </div>
             </div>
@@ -727,24 +728,24 @@ export default function Home() {
         {showCreateEventModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white/20 backdrop-blur-lg p-6 rounded-lg shadow-xl max-w-md w-full mx-4 border border-white/30 max-h-[90vh] overflow-y-auto">
-              <h3 className="text-2xl font-bold mb-4 text-white">Create New Event</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">Crear Nuevo Evento</h3>
 
               <form onSubmit={handleSubmitEvent} className="space-y-4">
                 <div>
-                  <label className="block text-white text-sm font-medium mb-1">Title</label>
+                  <label className="block text-white text-sm font-medium mb-1">Título</label>
                   <input
                     type="text"
                     name="title"
                     value={newEvent.title}
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Event title"
+                    placeholder="Título del evento"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-white text-sm font-medium mb-1">Start Time</label>
+                    <label className="block text-white text-sm font-medium mb-1">Hora de inicio</label>
                     <input
                       type="time"
                       name="startTime"
@@ -754,7 +755,7 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <label className="block text-white text-sm font-medium mb-1">End Time</label>
+                    <label className="block text-white text-sm font-medium mb-1">Hora de fin</label>
                     <input
                       type="time"
                       name="endTime"
@@ -766,7 +767,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-white text-sm font-medium mb-1">Date</label>
+                  <label className="block text-white text-sm font-medium mb-1">Fecha</label>
                   <input
                     type="date"
                     name="date"
@@ -786,7 +787,7 @@ export default function Home() {
                       className="mr-2 h-4 w-4 rounded border-white/30 bg-white/10 text-blue-500 focus:ring-blue-500"
                     />
                     <label htmlFor="isRecurring" className="text-white text-sm font-medium">
-                      Recurring Event
+                      Evento Recurrente
                     </label>
                   </div>
                 </div>
@@ -794,22 +795,22 @@ export default function Home() {
                 {newEvent.isRecurring && (
                   <div className="space-y-4 mt-4 p-4 bg-white/5 rounded-md border border-white/10">
                     <div>
-                      <label className="block text-white text-sm font-medium mb-1">Recurrence Pattern</label>
+                      <label className="block text-white text-sm font-medium mb-1">Patrón de recurrencia</label>
                       <select
                         name="recurrencePattern"
                         value={newEvent.recurrencePattern}
                         onChange={handleInputChange}
                         className="w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       >
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
+                        <option value="diariamente">Diariamente</option>
+                        <option value="semanalmente">Semanalmente</option>
+                        <option value="mensualmente">Mensualmente</option>
+                        <option value="anualmente">Anualmente</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-white text-sm font-medium mb-1">End Date (Optional)</label>
+                      <label className="block text-white text-sm font-medium mb-1">Fecha de fin (Opcional)</label>
                       <input
                         type="date"
                         name="recurrenceEndDate"
@@ -822,44 +823,44 @@ export default function Home() {
                 )}
 
                 <div>
-                  <label className="block text-white text-sm font-medium mb-1">Location</label>
+                  <label className="block text-white text-sm font-medium mb-1">Ubicación</label>
                   <input
                     type="text"
                     name="location"
                     value={newEvent.location}
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Event location"
+                    placeholder="Ubicación del evento"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white text-sm font-medium mb-1">Description</label>
+                  <label className="block text-white text-sm font-medium mb-1">Descripción</label>
                   <textarea
                     name="description"
                     value={newEvent.description}
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 bg-white/10 border border-white/30 rounded-md text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[80px]"
-                    placeholder="Event description"
+                    placeholder="Descripción del evento"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white text-sm font-medium mb-1">Attendees</label>
+                  <label className="block text-white text-sm font-medium mb-1">Asistentes</label>
                   <div className="flex gap-2 mb-2">
                     <input
                       type="text"
                       value={attendeeInput}
                       onChange={(e) => setAttendeeInput(e.target.value)}
                       className="flex-1 px-3 py-2 bg-white/10 border border-white/30 rounded-md text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="Add attendee"
+                      placeholder="Agregar asistente"
                     />
                     <button
                       type="button"
                       onClick={handleAddAttendee}
                       className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
                     >
-                      Add
+                      Agregar
                     </button>
                   </div>
 
@@ -887,13 +888,13 @@ export default function Home() {
                     onClick={() => setShowCreateEventModal(false)}
                     className="px-4 py-2 bg-white/10 text-white rounded-md hover:bg-white/20 transition-colors"
                   >
-                    Cancel
+                    Cancelar
                   </button>
                   <button
                     type="submit"
                     className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
                   >
-                    Create Event
+                    Crear Evento
                   </button>
                 </div>
               </form>
